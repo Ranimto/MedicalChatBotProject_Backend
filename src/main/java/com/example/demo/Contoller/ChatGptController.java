@@ -16,9 +16,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/v1/bot")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
 public class ChatGptController{
-
     @PostMapping("/send")
     public ResponseEntity<String> sendMessage (@RequestBody String message) throws IOException {
         String apiEndpoint= "https://api.openai.com/v1/chat/completions";
@@ -26,7 +24,6 @@ public class ChatGptController{
         headers.setContentType(MediaType.APPLICATION_JSON);
         System.out.println("HEEEERRRREEEEEE====");
         headers.set("Authorization","Bearer "+"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");
-        headers.set("Access-Control-Allow-Origin", "*");
         RestTemplate restTemplate=new RestTemplate();
         HttpEntity<String> request=new HttpEntity<>(message,headers);
 
